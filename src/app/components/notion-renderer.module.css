@@ -1,0 +1,16 @@
+.page {
+  gap: 16px;
+  font-family: var(--font-geist-sans);
+}
+
+.indexPage {
+  --notion-max-width: 900px;
+
+  .notion-gallery-grid {
+    gap: 2vmin;
+  }
+
+  .notion-gallery-grid-size-large {
+    grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+  }
+}
