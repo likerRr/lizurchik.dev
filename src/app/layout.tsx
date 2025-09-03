@@ -1,14 +1,7 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
-import {
-  ColorSchemeScript,
-  createTheme,
-  mantineHtmlProps,
-  MantineProvider,
-} from '@mantine/core';
 
-import '@mantine/core/styles.css';
 import './globals.css';
 
 const geistSans = Geist({
@@ -27,20 +20,15 @@ export const metadata: Metadata = {
     'Personal writings about frontend, backend, UX, DX and the projects I work on',
 };
 
-const theme = createTheme({});
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" {...mantineHtmlProps}>
-      <head>
-        <ColorSchemeScript />
-      </head>
+    <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <MantineProvider theme={theme}>{children}</MantineProvider>
+        {children}
       </body>
     </html>
   );

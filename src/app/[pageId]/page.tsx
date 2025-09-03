@@ -1,5 +1,4 @@
-import { AppShell, AppShellMain } from '@mantine/core';
-import { getAllPagesInSpace } from 'notion-utils';
+import { getAllPagesInSpace, parsePageId } from 'notion-utils';
 import { notionApi } from '../../lib/notionApi';
 import { readConfig } from '../../lib/readConfig';
 import { NotionPage } from '../components/NotionPage';
@@ -27,11 +26,5 @@ export default async function Page({ params }: Props) {
   const { pageId } = await params;
   const recordMap = await notionApi.getPage(pageId);
 
-  return (
-    <AppShell>
-      <AppShellMain>
-        <NotionPage recordMap={recordMap} />
-      </AppShellMain>
-    </AppShell>
-  );
+  return <NotionPage recordMap={recordMap} />;
 }
