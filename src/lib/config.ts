@@ -3,13 +3,22 @@ import { getEnv } from './getEnv';
 import { readConfig } from './readConfig';
 import { PageUrlOverridesInverseMap, PageUrlOverridesMap, Site } from './types';
 
+export const environment = process.env.NODE_ENV || 'development';
+
+export const isDev = environment === 'development';
+
+export const isServer = typeof window === 'undefined';
+
 export const rootNotionSpaceId = readConfig('rootNotionSpaceId');
 export const defaultPageCoverPosition = readConfig('defaultPageCoverPosition');
 export const defaultPageCover = readConfig('defaultPageCover');
 export const defaultPageIcon = readConfig('defaultPageIcon');
 
+export const domain = getEnv<string>('DOMAIN') ?? '';
+export const host = getEnv<string>('HOST') ?? '';
+
 export const site: Site = {
-  domain: readConfig('domain'),
+  domain,
   name: readConfig('name'),
   rootNotionPageId: readConfig('rootNotionPageId'),
   rootNotionSpaceId: rootNotionSpaceId ?? null,
@@ -80,12 +89,6 @@ export const pageUrlAdditions = cleanPageUrlMap(
 
 export const inversePageUrlOverrides = invertPageUrlOverrides(pageUrlOverrides);
 
-export const environment = process.env.NODE_ENV || 'development';
-
-export const isDev = environment === 'development';
-
-export const isServer = typeof window === 'undefined';
-
 export const includeNotionIdInUrls = isDev;
 
 // Optional redis instance for persisting preview images
@@ -121,9 +124,3 @@ export const api = {
   getNotionPageInfo: `${apiBaseUrl}/notion-page-info`,
   getSocialImage: `${apiBaseUrl}/social-image`,
 };
-
-export const port = getEnv('PORT', '3000');
-
-export const host = isDev
-  ? `http://localhost:${port}`
-  : `https://${site.domain}`;

@@ -3,10 +3,10 @@ import { CSSProperties } from 'react';
 import { Breadcrumbs, cs, Search, useNotionContext } from 'react-notion-x';
 
 import { config } from '../../../../config';
-import { readConfig } from '../../../lib/readConfig';
+import { domain } from '@/lib/config';
 
 const notionNavHeaderStyle = {
-  '--domain': `"${readConfig('domain')}"`,
+  '--domain': `"${domain}"`,
 } as CSSProperties;
 
 export const Header = ({

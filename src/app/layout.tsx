@@ -29,7 +29,6 @@ export const viewport: Viewport = {
 export function generateMetadata(): Metadata {
   const siteName = site.name;
   const defaultName = siteName.split(' | ')[0];
-  const rootDomain = readConfig('rootDomain');
   const description = (site ?? configSite).description;
   const canonical = `https://${(site ?? configSite).domain}`;
   // TODO
@@ -40,7 +39,7 @@ export function generateMetadata(): Metadata {
   };
 
   return {
-    metadataBase: new URL(rootDomain),
+    metadataBase: new URL(host),
     title: titleTemplateString,
     description,
     openGraph: {

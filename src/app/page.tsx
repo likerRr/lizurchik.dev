@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { host } from '../lib/config';
 import { getPageMetadata } from '../lib/getPageMetadata';
 import { readConfig } from '../lib/readConfig';
 import { resolveNotionPage } from '../lib/resolveNotionPage';
@@ -14,10 +15,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
 const Home = async () => {
   const rootPageId = readConfig('rootNotionPageId');
-  const pageProps = await resolveNotionPage(
-    readConfig('rootDomain'),
-    rootPageId,
-  );
+  const pageProps = await resolveNotionPage(host, rootPageId);
 
   return <NotionPage {...pageProps} />;
 };

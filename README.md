@@ -21,3 +21,10 @@ If the article doesn't have a cover, the default `/public/empty-cover.png` image
 For proper SEO, each page should have the following properties:
 - "Social Image" (used for Open Graph and Twitter cards). Otherwise, the page's cover will be used or `defaultPageCover` from `site.config.ts`.
 - "Description" (used for meta description tag)
+
+### ENV
+
+Setup environment variables in a `.env` file in the root directory. You can use the `.env.example` file as a template.
+
+- DOMAIN – domain name (e.g. `www.example.com` or `example.com`)
+- HOST – host name, including a port number (e.g. `https://example.com` or `http://example.com:80`)

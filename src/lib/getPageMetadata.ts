@@ -1,15 +1,14 @@
 import { PageBlock } from 'notion-types';
 import { getBlockTitle, getPageProperty } from 'notion-utils';
-import { defaultPageCover, isDev } from './config';
+import { defaultPageCover, host, isDev } from './config';
 import { getSocialImageUrl } from './getSocialImageUrl';
 import { mapImageUrl } from './mapImageUrl';
 import { getCanonicalPageUrl } from './mapPageUrl';
-import { readConfig } from './readConfig';
 import { resolveNotionPage } from './resolveNotionPage';
 
 export const getPageMetadata = async (page: string) => {
   const { site, error, pageId, recordMap } = await resolveNotionPage(
-    readConfig('rootDomain'),
+    host,
     page,
   );
   const block = pageId ? recordMap?.block?.[pageId]?.value : undefined;
@@ -18,7 +17,6 @@ export const getPageMetadata = async (page: string) => {
     return {};
   }
 
-  const rootDomain = readConfig('rootDomain');
   const title = getBlockTitle(block, recordMap) || undefined;
   const description =
     getPageProperty<string>('Description', block, recordMap) || undefined;
@@ -35,7 +33,7 @@ export const getPageMetadata = async (page: string) => {
     : getCanonicalPageUrl(site, recordMap)(pageId);
 
   return {
-    metadataBase: new URL(rootDomain),
+    metadataBase: new URL(host),
     title,
     description,
     openGraph: {

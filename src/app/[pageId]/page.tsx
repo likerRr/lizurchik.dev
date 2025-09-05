@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
+import { host } from '../../lib/config';
 import { getPageMetadata } from '../../lib/getPageMetadata';
 import { getSiteMap } from '../../lib/getSiteMap';
-import { readConfig } from '../../lib/readConfig';
 import { resolveNotionPage } from '../../lib/resolveNotionPage';
 import { NotionPage } from '../components/NotionPage';
 
@@ -28,7 +28,7 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { pageId } = await params;
-  const pageProps = await resolveNotionPage(readConfig('rootDomain'), pageId);
+  const pageProps = await resolveNotionPage(host, pageId);
 
   return <NotionPage {...pageProps} />;
 }

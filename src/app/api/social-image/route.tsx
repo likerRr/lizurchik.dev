@@ -25,8 +25,6 @@ import { notionApi } from '../../../lib/notionApi';
 import { readConfig } from '../../../lib/readConfig';
 import { NotionPageInfo, PageError } from '../../../lib/types';
 
-export const runtime = 'edge';
-
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url!);
   const pageId = parsePageId(

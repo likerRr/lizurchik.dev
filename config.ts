@@ -1,7 +1,7 @@
 export const config = {
   rootNotionPageId: '2503641abc59805ea747d35c67f5f7f0',
   rootNotionSpaceId: undefined,
-  rootDomain: 'https://lizurchik.dev',
+  // rootDomain: 'https://lizurchik.dev',
   navigationStyle: 'custom',
   navigationLinks: [
     {
@@ -23,7 +23,7 @@ export const config = {
 
   // basic site info (required)
   name: 'Dev Notes | Alexey Lizurchik',
-  domain: 'lizurchik.dev',
+  // domain: 'lizurchik.dev',
   author: 'Alexey Lizurchik',
 
   // open graph metadata (optional)
