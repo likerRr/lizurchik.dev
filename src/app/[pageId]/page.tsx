@@ -3,7 +3,7 @@ import { readConfig } from '../../lib/readConfig';
 import { resolveNotionPage } from '../../lib/resolveNotionPage';
 import { NotionPage } from '../components/NotionPage';
 
-export const revalidate = 600;
+export const revalidate = 60;
 
 export async function generateStaticParams() {
   const siteMap = await getSiteMap();
