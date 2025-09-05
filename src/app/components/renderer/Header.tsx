@@ -2,14 +2,14 @@ import type * as types from 'notion-types';
 import { CSSProperties } from 'react';
 import { Breadcrumbs, cs, Search, useNotionContext } from 'react-notion-x';
 
-import { config } from '../../../config';
-import { readConfig } from '../../lib/readConfig';
+import { config } from '../../../../config';
+import { readConfig } from '../../../lib/readConfig';
 
 const notionNavHeaderStyle = {
   '--domain': `"${readConfig('domain')}"`,
 } as CSSProperties;
 
-export const NotionPageHeader = ({
+export const Header = ({
   block,
 }: {
   block: types.CollectionViewPageBlock | types.PageBlock;

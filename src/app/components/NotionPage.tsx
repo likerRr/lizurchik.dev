@@ -1,6 +1,5 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { idToUuid } from 'notion-utils';
 import { useMemo } from 'react';
@@ -10,34 +9,23 @@ import { mapPageUrl } from '../../lib/mapPageUrl';
 import { readConfig } from '../../lib/readConfig';
 import { searchNotion } from '../../lib/searchNotion';
 import { PageProps } from '../../lib/types';
-import { NotionPageHeader } from './NotionPageHeader';
+import { Code } from './renderer/Code';
+import { Header } from './renderer/Header';
+import { Collection } from './renderer/Collection';
+import { Modal } from './renderer/Modal';
+import nrStyles from './notion-renderer.module.css';
 
 import 'react-notion-x/src/styles.css';
 import './notion-x-globals.css';
-import nrStyles from './notion-renderer.module.css';
 
 type Props = PageProps;
-
-const Collection = dynamic(() =>
-  import('react-notion-x/build/third-party/collection').then(m => m.Collection),
-);
-
-const Modal = dynamic(
-  () =>
-    import('react-notion-x/build/third-party/modal').then(m => {
-      m.Modal.setAppElement('.notion-viewport');
-      return m.Modal;
-    }),
-  {
-    ssr: false,
-  },
-);
 
 const components: Partial<NotionComponents> = {
   nextImage: Image,
   Collection,
-  Header: NotionPageHeader,
+  Header,
   Modal,
+  Code,
 };
 
 export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
