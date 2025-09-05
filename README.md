@@ -6,7 +6,7 @@
 
 To customize the configuration, edit the `config.ts` file in the root directory.
 
-- `rootPageId` – The ID of the root page in your Notion. This is the page that will be used as the main entry point for your website. This page **must** be [published](https://www.notion.com/help/guides/publish-notion-pages-to-the-web) to web. You can disable indexing in publishing settings dialog if you don't want it to be indexed by search engines (the indexing is relevant only for a Notion page, since you will more likely host your blog separately, and setup SEO yourself).
+- `rootNotionPageId` – The ID of the root page in your Notion. This is the page that will be used as the main entry point for your website. This page **must** be [published](https://www.notion.com/help/guides/publish-notion-pages-to-the-web) to web. You can disable indexing in publishing settings dialog if you don't want it to be indexed by search engines (the indexing is relevant only for a Notion page, since you will more likely host your blog separately, and setup SEO yourself).
 
 ### Favicon
 

@@ -1,19 +1,15 @@
-import { getAllPagesInSpace, parsePageId } from 'notion-utils';
-import { notionApi } from '../../lib/notionApi';
+import { getSiteMap } from '../../lib/getSiteMap';
 import { readConfig } from '../../lib/readConfig';
+import { resolveNotionPage } from '../../lib/resolveNotionPage';
 import { NotionPage } from '../components/NotionPage';
 
-export async function generateStaticParams() {
-  const pageMap = await getAllPagesInSpace(
-    readConfig('rootPageId'),
-    undefined,
-    pageId => notionApi.getPage(pageId),
-    {
-      maxDepth: 1,
-    },
-  );
+export const revalidate = 600;
 
-  return Object.keys(pageMap).map(pageId => ({
+export async function generateStaticParams() {
+  const siteMap = await getSiteMap();
+  const pageIds = Object.keys(siteMap.canonicalPageMap);
+
+  return pageIds.map(pageId => ({
     pageId,
   }));
 }
@@ -24,7 +20,7 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { pageId } = await params;
-  const recordMap = await notionApi.getPage(pageId);
+  const pageProps = await resolveNotionPage(readConfig('rootDomain'), pageId);
 
-  return <NotionPage recordMap={recordMap} />;
+  return <NotionPage {...pageProps} />;
 }

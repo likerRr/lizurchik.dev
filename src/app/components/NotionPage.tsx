@@ -2,36 +2,77 @@
 
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { ExtendedRecordMap } from 'notion-types';
+import { idToUuid } from 'notion-utils';
+import { useMemo } from 'react';
 import { cs, NotionComponents, NotionRenderer } from 'react-notion-x';
+import { isPreviewImageSupportEnabled } from '../../lib/config';
+import { mapPageUrl } from '../../lib/mapPageUrl';
+import { readConfig } from '../../lib/readConfig';
+import { searchNotion } from '../../lib/searchNotion';
+import { PageProps } from '../../lib/types';
+import { NotionPageHeader } from './NotionPageHeader';
 
 import 'react-notion-x/src/styles.css';
 import './notion-x-globals.css';
 import nrStyles from './notion-renderer.module.css';
 
-type Props = {
-  recordMap: ExtendedRecordMap;
-  isIndex?: boolean;
-};
+type Props = PageProps;
 
 const Collection = dynamic(() =>
   import('react-notion-x/build/third-party/collection').then(m => m.Collection),
 );
 
+const Modal = dynamic(
+  () =>
+    import('react-notion-x/build/third-party/modal').then(m => {
+      m.Modal.setAppElement('.notion-viewport');
+      return m.Modal;
+    }),
+  {
+    ssr: false,
+  },
+);
+
 const components: Partial<NotionComponents> = {
   nextImage: Image,
   Collection,
+  Header: NotionPageHeader,
+  Modal,
 };
 
-export const NotionPage = ({ recordMap, isIndex }: Props) => {
+export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
+  const block = pageId ? recordMap?.block?.[pageId]?.value : undefined;
+  const isIndex = pageId === idToUuid(readConfig('rootNotionPageId'));
+
+  const siteMapPageUrl = useMemo(() => {
+    return site
+      ? mapPageUrl(site, recordMap!, new URLSearchParams())
+      : undefined;
+  }, [site, recordMap]);
+
+  if (error || !site || !block || !recordMap) {
+    // return <Page404 site={site} pageId={pageId} error={error} />;
+    return 'not found';
+  }
+
   return (
     <>
+      {/*<div>*/}
+      {/*  {getPageProperty('Preview text', recordMap.block[id]?.value, recordMap)}*/}
+      {/*</div>*/}
       <NotionRenderer
         fullPage
-        bodyClassName={cs(isIndex && nrStyles.indexPage, nrStyles.page)}
-        recordMap={recordMap}
+        darkMode
+        showCollectionViewDropdown={false}
         components={components}
-        darkMode={false}
+        recordMap={recordMap}
+        rootPageId={readConfig('rootNotionPageId')}
+        rootDomain={readConfig('rootDomain')}
+        className={cs(isIndex && 'index-page')}
+        bodyClassName={cs(isIndex && 'index-page-body', nrStyles.page)}
+        mapPageUrl={siteMapPageUrl}
+        previewImages={isPreviewImageSupportEnabled}
+        searchNotion={searchNotion}
       />
     </>
   );
