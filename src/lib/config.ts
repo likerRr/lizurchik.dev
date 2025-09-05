@@ -3,13 +3,20 @@ import { getEnv } from './getEnv';
 import { readConfig } from './readConfig';
 import { PageUrlOverridesInverseMap, PageUrlOverridesMap, Site } from './types';
 
+export const rootNotionSpaceId = readConfig('rootNotionSpaceId');
+export const defaultPageCoverPosition = readConfig('defaultPageCoverPosition');
+export const defaultPageCover = readConfig('defaultPageCover');
+export const defaultPageIcon = readConfig('defaultPageIcon');
+
 export const site: Site = {
-  domain: readConfig('rootDomain'),
+  domain: readConfig('domain'),
   name: readConfig('name'),
   rootNotionPageId: readConfig('rootNotionPageId'),
-  rootNotionSpaceId: readConfig('rootNotionSpaceId') ?? null,
+  rootNotionSpaceId: rootNotionSpaceId ?? null,
   description: readConfig('description'),
 };
+
+export const author = readConfig('author');
 
 const cleanPageUrlMap = (
   pageUrlMap: PageUrlOverridesMap,
@@ -114,3 +121,9 @@ export const api = {
   getNotionPageInfo: `${apiBaseUrl}/notion-page-info`,
   getSocialImage: `${apiBaseUrl}/social-image`,
 };
+
+export const port = getEnv('PORT', '3000');
+
+export const host = isDev
+  ? `http://localhost:${port}`
+  : `https://${site.domain}`;

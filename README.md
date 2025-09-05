@@ -15,3 +15,9 @@ To customize the [favicon](https://nextjs.org/docs/app/api-reference/file-conven
 ### Empty cover
 
 If the article doesn't have a cover, the default `/public/empty-cover.png` image will be shown. Replace with your own image if needed. The suggested aspect ratio is 16:9.
+
+### SEO
+
+For proper SEO, each page should have the following properties:
+- "Social Image" (used for Open Graph and Twitter cards). Otherwise, the page's cover will be used or `defaultPageCover` from `site.config.ts`.
+- "Description" (used for meta description tag)

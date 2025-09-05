@@ -9,6 +9,7 @@ import { mapPageUrl } from '../../lib/mapPageUrl';
 import { readConfig } from '../../lib/readConfig';
 import { searchNotion } from '../../lib/searchNotion';
 import { PageProps } from '../../lib/types';
+import { JSONLD } from './JSONLD';
 import { Code } from './renderer/Code';
 import { Header } from './renderer/Header';
 import { Collection } from './renderer/Collection';
@@ -39,15 +40,25 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
   }, [site, recordMap]);
 
   if (error || !site || !block || !recordMap) {
+    // TODO
     // return <Page404 site={site} pageId={pageId} error={error} />;
     return 'not found';
   }
 
+  const isBlogPost =
+    block?.type === 'page' && block?.parent_table === 'collection';
+
   return (
     <>
-      {/*<div>*/}
-      {/*  {getPageProperty('Preview text', recordMap.block[id]?.value, recordMap)}*/}
-      {/*</div>*/}
+      {isBlogPost && (
+        <JSONLD
+          site={site}
+          recordMap={recordMap}
+          block={block}
+          pageId={pageId}
+        />
+      )}
+
       <NotionRenderer
         fullPage
         darkMode

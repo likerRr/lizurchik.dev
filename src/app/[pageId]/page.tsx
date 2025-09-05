@@ -1,9 +1,17 @@
+import { Metadata } from 'next';
+import { getPageMetadata } from '../../lib/getPageMetadata';
 import { getSiteMap } from '../../lib/getSiteMap';
 import { readConfig } from '../../lib/readConfig';
 import { resolveNotionPage } from '../../lib/resolveNotionPage';
 import { NotionPage } from '../components/NotionPage';
 
 export const revalidate = 60;
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { pageId } = await params;
+
+  return getPageMetadata(pageId);
+}
 
 export async function generateStaticParams() {
   const siteMap = await getSiteMap();
