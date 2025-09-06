@@ -36,15 +36,15 @@ const getNavigationLinkPages = pMemoize(
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   let recordMap = await notionApi.getPage(pageId);
 
-  const navigationLinkRecordMaps = await getNavigationLinkPages();
+  // const navigationLinkRecordMaps = await getNavigationLinkPages();
 
-  if (navigationLinkRecordMaps?.length) {
-    recordMap = navigationLinkRecordMaps.reduce(
-      (map, navigationLinkRecordMap) =>
-        mergeRecordMaps(map, navigationLinkRecordMap),
-      recordMap,
-    );
-  }
+  // if (navigationLinkRecordMaps?.length) {
+  //   recordMap = navigationLinkRecordMaps.reduce(
+  //     (map, navigationLinkRecordMap) =>
+  //       mergeRecordMaps(map, navigationLinkRecordMap),
+  //     recordMap,
+  //   );
+  // }
 
   if (isPreviewImageSupportEnabled) {
     const previewImageMap = await getPreviewImageMap(recordMap);
