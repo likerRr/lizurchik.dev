@@ -7,12 +7,12 @@ export const config = {
     {
       title: 'About',
       pageId: '2653641abc5980adb8c4fdb5f59625d5',
-      url: null,
+      url: undefined,
     },
     {
       title: 'Portfolio',
       pageId: '2653641abc59800da61ccc5208d3e2fc',
-      url: null,
+      url: undefined,
     },
   ],
 

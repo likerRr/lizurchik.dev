@@ -11,8 +11,10 @@ const notionNavHeaderStyle = {
 
 export const Header = ({
   block,
+  navigationLinks = config.navigationLinks,
 }: {
   block: types.CollectionViewPageBlock | types.PageBlock;
+  navigationLinks?: { title: string; pageId?: string; url?: string }[];
 }) => {
   const { components, mapPageUrl } = useNotionContext();
 
@@ -22,7 +24,7 @@ export const Header = ({
         <Breadcrumbs block={block} rootOnly />
 
         <div className="notion-nav-header-rhs breadcrumbs">
-          {config.navigationLinks
+          {navigationLinks
             ?.map((link, index) => {
               if (!link?.pageId && !link?.url) {
                 return null;

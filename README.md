@@ -7,6 +7,7 @@
 * Site map (/sitemap.xml)
 * Drafts support (toggled by Public property)
 * SEO support (meta description, Open Graph, Twitter cards) with shareable social images
+* Page Not Found (404)
 
 ## Customization
 
@@ -52,3 +53,10 @@ Setup environment variables in a `.env.local` file in the root directory. You ca
 
 - NEXT_PUBLIC_DOMAIN – domain name (e.g. `www.example.com` or `example.com`)
 - NEXT_PUBLIC_HOST – host name, including a port number (e.g. `https://example.com` or `http://example.com:80`)
+
+### Public assets
+
+You can add public assets (e.g. images) to the `/public` directory. They will be available at the root of your site (e.g. `/my-image.png`). There are some predefined images:
+
+- `/public/not-found.png` – image for the `/app/not-found.tsx` page
+- `/src/app/favicon.ico` – favicon for the site

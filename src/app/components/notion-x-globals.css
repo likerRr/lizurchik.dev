@@ -46,19 +46,11 @@ body {
 }
 
 .notion-page-cover-wrapper img {
-  /*max-width: unset;*/
-  border-top-right-radius: 35%;
-  border-top-left-radius: 65%;
-  border-bottom-left-radius: 35%;
-  border-bottom-right-radius: 65%;
+  border-radius: 65% 35% 65% 35%;
 }
 
-.index-page {
-  .notion-page-cover-wrapper img {
-    /*max-width: unset;*/
-    /*max-width: 1400px;*/
-    /*border-radius: unset;*/
-  }
+.notion-page {
+  gap: 16px;
 }
 
 .index-page-body {
@@ -103,6 +95,7 @@ body {
 }
 
 .notion-collection-card-cover:empty {
+  /* TODO*/
   background: url(/empty-cover-c.png) no-repeat center center;
   background-size: cover;
 }

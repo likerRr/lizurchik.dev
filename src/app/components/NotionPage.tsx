@@ -10,11 +10,11 @@ import { readConfig } from '../../lib/readConfig';
 import { searchNotion } from '../../lib/searchNotion';
 import { PageProps } from '../../lib/types';
 import { JSONLD } from './JSONLD';
+import NotFound from './NotFound';
 import { Code } from './renderer/Code';
 import { Header } from './renderer/Header';
 import { Collection } from './renderer/Collection';
 import { Modal } from './renderer/Modal';
-import nrStyles from './notion-renderer.module.css';
 
 import 'react-notion-x/src/styles.css';
 import './notion-x-globals.css';
@@ -40,9 +40,7 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
   }, [site, recordMap]);
 
   if (error || !site || !block || !recordMap) {
-    // TODO + sitemap
-    // return <Page404 site={site} pageId={pageId} error={error} />;
-    return 'not found';
+    return <NotFound site={site} pageId={pageId} error={error} />;
   }
 
   const isBlogPost =
@@ -68,7 +66,7 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
         rootPageId={readConfig('rootNotionPageId')}
         rootDomain={host}
         className={cs(isIndex && 'index-page')}
-        bodyClassName={cs(isIndex && 'index-page-body', nrStyles.page)}
+        bodyClassName={cs(isIndex && 'index-page-body')}
         mapPageUrl={siteMapPageUrl}
         previewImages={isPreviewImageSupportEnabled}
         searchNotion={searchNotion}
