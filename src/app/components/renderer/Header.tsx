@@ -7,6 +7,9 @@ import { domain } from '@/lib/config';
 
 const notionNavHeaderStyle = {
   '--domain': `"${domain}"`,
+  '--domain-ch': `${domain.length}ch`,
+  // a fallback if "ch" is not supported
+  '--domain-px': '100px',
 } as CSSProperties;
 
 export const Header = ({

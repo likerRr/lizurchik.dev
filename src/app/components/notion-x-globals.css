@@ -171,6 +171,8 @@ h1.notion-title,
 
 .breadcrumb .title {
   visibility: hidden;
+  width: var(--domain-px);
+  width: var(--domain-ch);
 }
 
 .breadcrumb .title::before {
