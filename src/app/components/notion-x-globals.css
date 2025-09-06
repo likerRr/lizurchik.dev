@@ -46,7 +46,13 @@ body {
 }
 
 .notion-page-cover-wrapper img {
-  border-radius: 65% 35% 65% 35%;
+  border-radius: 0;
+}
+
+@media (min-width: 800px) {
+  .notion-page-cover-wrapper img {
+    border-radius: 65% 35% 65% 35%;
+  }
 }
 
 .notion-page {
