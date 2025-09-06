@@ -19,7 +19,7 @@ export default function NotFound({ site = configSite }: PageProps) {
         }}
       >
         <Header
-          // @ts-ignore
+          // @ts-expect-error empty block
           block={{}}
           navigationLinks={[
             {

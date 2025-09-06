@@ -51,6 +51,8 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection';
 
+  // TODO social links
+
   return (
     <>
       {isBlogPost && (

@@ -29,7 +29,7 @@ export default function Error({
         }}
       >
         <Header
-          // @ts-ignore
+          // @ts-expect-error empty block
           block={{}}
           navigationLinks={[
             {

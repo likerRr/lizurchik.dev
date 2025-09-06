@@ -1,8 +1,4 @@
-import {
-  getAllPagesInSpace,
-  getCanonicalPageId,
-  getPageProperty,
-} from 'notion-utils';
+import { getAllPagesInSpace, getCanonicalPageId } from 'notion-utils';
 import pMemoize from 'p-memoize';
 import { includeNotionIdInUrls, site } from './config';
 import { notionApi } from './notionApi';

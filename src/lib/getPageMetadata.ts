@@ -1,6 +1,6 @@
 import { PageBlock } from 'notion-types';
 import { getBlockTitle, getPageProperty } from 'notion-utils';
-import { defaultPageCover, host, isDev } from './config';
+import { defaultPageCover, host } from './config';
 import { getSocialImageUrl } from './getSocialImageUrl';
 import { mapImageUrl } from './mapImageUrl';
 import { getCanonicalPageUrl } from './mapPageUrl';
