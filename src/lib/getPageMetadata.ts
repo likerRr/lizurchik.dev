@@ -28,9 +28,7 @@ export const getPageMetadata = async (page: string) => {
     block,
   );
   const socialImageUrl = getSocialImageUrl(pageId) || image;
-  const canonical = isDev
-    ? undefined
-    : getCanonicalPageUrl(site, recordMap)(pageId);
+  const canonical = getCanonicalPageUrl(site, recordMap)(pageId);
 
   return {
     metadataBase: new URL(host),

@@ -10,7 +10,7 @@ import { feedUrl, host, rootNotionPageId, site } from '../../lib/config';
 import { getSiteMap } from '../../lib/getSiteMap';
 import { getSocialImageUrl } from '../../lib/getSocialImageUrl';
 import { getCanonicalPageUrl } from '../../lib/mapPageUrl';
-import { getIsPublicProperty } from '../../lib/properties';
+import { getIsPublicProperty, getLastModifiedTime } from '../../lib/properties';
 
 export const GET = async () => {
   const siteMap = await getSiteMap();
@@ -60,21 +60,7 @@ export const GET = async () => {
       site.description ||
       '';
     const url = getCanonicalPageUrl(site, recordMap)(pageId);
-    const lastUpdatedTime = getPageProperty<number>(
-      'Last Updated',
-      block,
-      recordMap,
-    );
-    const publishedTime = getPageProperty<number>(
-      'Published',
-      block,
-      recordMap,
-    );
-    const date = lastUpdatedTime
-      ? new Date(lastUpdatedTime)
-      : publishedTime
-        ? new Date(publishedTime)
-        : new Date();
+    const date = getLastModifiedTime(block, recordMap);
     const socialImageUrl = getSocialImageUrl(pageId);
 
     feed.item({
