@@ -44,7 +44,7 @@ For proper SEO, each page should have the following properties:
 
 ### RSS
 
-RSS feed is available at `/feed.xml`. You can customize it in the `app/feed.xml/route.ts` file.
+RSS feed is available at `/feed.xml` and `/rss`. You can customize it in the `app/feed.xml/route.ts` file.
 
 ### ENV
 
