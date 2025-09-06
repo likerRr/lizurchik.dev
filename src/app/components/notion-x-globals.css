@@ -45,6 +45,11 @@ body {
   background-color: var(--bg-color-zero);
 }
 
+.notion-app,
+.notion-header{
+  min-width: 335px;
+}
+
 .notion-page-cover-wrapper img {
   border-radius: 0;
 }
