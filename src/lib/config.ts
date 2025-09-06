@@ -10,17 +10,18 @@ export const isDev = environment === 'development';
 export const isServer = typeof window === 'undefined';
 
 export const rootNotionSpaceId = readConfig('rootNotionSpaceId');
+export const rootNotionPageId = readConfig('rootNotionPageId');
 export const defaultPageCoverPosition = readConfig('defaultPageCoverPosition');
 export const defaultPageCover = readConfig('defaultPageCover');
 export const defaultPageIcon = readConfig('defaultPageIcon');
 
-export const domain = getEnv<string>('DOMAIN') ?? '';
-export const host = getEnv<string>('HOST') ?? '';
+export const domain = process.env.NEXT_PUBLIC_DOMAIN ?? '';
+export const host = process.env.NEXT_PUBLIC_HOST ?? '';
 
 export const site: Site = {
   domain,
   name: readConfig('name'),
-  rootNotionPageId: readConfig('rootNotionPageId'),
+  rootNotionPageId,
   rootNotionSpaceId: rootNotionSpaceId ?? null,
   description: readConfig('description'),
 };
@@ -96,7 +97,7 @@ export const isRedisEnabled: boolean =
   readConfig('isRedisEnabled', false) || !!getEnv('REDIS_ENABLED', null);
 
 // (if you want to enable redis, only REDIS_HOST and REDIS_PASSWORD are required)
-// we recommend that you store these in a local `.env` file
+// we recommend that you store these in a local `.env.local` file
 export const redisHost = getEnv(
   'REDIS_HOST',
   isRedisEnabled ? undefined : null,
@@ -118,6 +119,8 @@ export const isPreviewImageSupportEnabled = readConfig(
 );
 
 export const apiBaseUrl = `/api`;
+
+export const feedUrl = '/feed.xml';
 
 export const api = {
   searchNotion: `${apiBaseUrl}/search-notion`,

@@ -6,6 +6,7 @@ import {
 import pMemoize from 'p-memoize';
 import { includeNotionIdInUrls, site } from './config';
 import { notionApi } from './notionApi';
+import { getIsPublicProperty } from './properties';
 import { readConfig } from './readConfig';
 import { SiteMap } from './types';
 
@@ -63,9 +64,8 @@ async function getAllPagesImpl(
       }
 
       const block = recordMap.block[pageId]?.value;
-      if (
-        !(getPageProperty<boolean | null>('Public', block!, recordMap) ?? true)
-      ) {
+
+      if (!getIsPublicProperty(block!, recordMap)) {
         return map;
       }
 

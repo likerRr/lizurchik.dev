@@ -3,7 +3,7 @@ import { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import './globals.css';
-import { host, site as configSite, site } from '../lib/config';
+import { feedUrl, host, site as configSite, site } from '../lib/config';
 import { readConfig } from '../lib/readConfig';
 
 const geistSans = Geist({
@@ -31,8 +31,7 @@ export function generateMetadata(): Metadata {
   const defaultName = siteName.split(' | ')[0];
   const description = (site ?? configSite).description;
   const canonical = `https://${(site ?? configSite).domain}`;
-  // TODO
-  const rssFeedUrl = `${host}/feed`;
+  const rssFeedUrl = `${host}${feedUrl}`;
   const titleTemplateString = {
     default: defaultName,
     template: readConfig('titleTemplate'),

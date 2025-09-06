@@ -40,7 +40,7 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
   }, [site, recordMap]);
 
   if (error || !site || !block || !recordMap) {
-    // TODO
+    // TODO + sitemap
     // return <Page404 site={site} pageId={pageId} error={error} />;
     return 'not found';
   }

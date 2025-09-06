@@ -1,5 +1,12 @@
 # Notion Blog Starter
 
+## Features
+
+* 1-minute cache on pages update (using [revalidate](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config#revalidate))
+* RSS feed (/feed.xml)
+* Drafts support (toggled by Public property)
+* SEO support (meta description, Open Graph, Twitter cards) with shareable social images
+
 ## Customization
 
 ### Config
@@ -22,9 +29,24 @@ For proper SEO, each page should have the following properties:
 - "Social Image" (used for Open Graph and Twitter cards). Otherwise, the page's cover will be used or `defaultPageCover` from `site.config.ts`.
 - "Description" (used for meta description tag)
 
+### Notion DB record properties
+
+- Public (checkbox) – determines if the page should be included in the RSS feed
+- Published (date) – date of publication
+- Last Updated (date) – date of last update
+- Slug (text) – custom slug for the page URL (if not set, the page ID will be used)
+- Tags (multi select) – tags for the page (used for filtering on the main page) (TBD)
+- Intro (text) – short description of the page (used on the main page)
+- Description (text) – meta description for the page (used for SEO)
+- Social Image (text) – full url to image used for social sharing (Open Graph, Twitter cards). By default, the page cover will be used
+
+### RSS
+
+RSS feed is available at `/feed.xml`. You can customize it in the `app/feed.xml/route.ts` file.
+
 ### ENV
 
-Setup environment variables in a `.env` file in the root directory. You can use the `.env.example` file as a template.
+Setup environment variables in a `.env.local` file in the root directory. You can use the `.env.example` file as a template.
 
-- DOMAIN – domain name (e.g. `www.example.com` or `example.com`)
-- HOST – host name, including a port number (e.g. `https://example.com` or `http://example.com:80`)
+- NEXT_PUBLIC_DOMAIN – domain name (e.g. `www.example.com` or `example.com`)
+- NEXT_PUBLIC_HOST – host name, including a port number (e.g. `https://example.com` or `http://example.com:80`)
