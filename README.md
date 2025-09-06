@@ -23,7 +23,7 @@ To customize the [favicon](https://nextjs.org/docs/app/api-reference/file-conven
 
 ### Empty cover
 
-If the article doesn't have a cover, the default `/public/empty-cover.png` image will be shown. Replace with your own image if needed. The suggested aspect ratio is 16:9.
+If a notion page doesn't have a cover, the default `/public/empty-cover-preview.png` image will be used as a preview within the collection, and `config.defaultPageCover` as the page's cover. Replace with your own image if needed. The suggested aspect ratio is 16:9.
 
 ### SEO
 
@@ -58,5 +58,6 @@ Setup environment variables in a `.env.local` file in the root directory. You ca
 
 You can add public assets (e.g. images) to the `/public` directory. They will be available at the root of your site (e.g. `/my-image.png`). There are some predefined images:
 
+- `/public/empty-cover-preview.png` – default image for the pages without a cover within a collection
 - `/public/not-found.png` – image for the `/app/not-found.tsx` page
 - `/src/app/favicon.ico` – favicon for the site

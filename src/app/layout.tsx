@@ -3,7 +3,8 @@ import { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 
 import './globals.css';
-import { feedUrl, host, site as configSite, site } from '../lib/config';
+import { feedUrl, host, rootNotionPageId, site } from '../lib/config';
+import { getSocialImageUrl } from '../lib/getSocialImageUrl';
 import { readConfig } from '../lib/readConfig';
 
 const geistSans = Geist({
@@ -29,8 +30,8 @@ export const viewport: Viewport = {
 export function generateMetadata(): Metadata {
   const siteName = site.name;
   const defaultName = siteName.split(' | ')[0];
-  const description = (site ?? configSite).description;
-  const canonical = `https://${(site ?? configSite).domain}`;
+  const description = site.description;
+  const canonical = `https://${site.domain}`;
   const rssFeedUrl = `${host}${feedUrl}`;
   const titleTemplateString = {
     default: defaultName,
@@ -45,7 +46,7 @@ export function generateMetadata(): Metadata {
       title: titleTemplateString,
       siteName,
       description,
-      images: (site ?? configSite).image,
+      images: getSocialImageUrl(rootNotionPageId) ?? undefined,
       url: canonical,
       type: 'website',
     },

@@ -4,7 +4,12 @@ import Image from 'next/image';
 import { idToUuid } from 'notion-utils';
 import { useMemo } from 'react';
 import { cs, NotionComponents, NotionRenderer } from 'react-notion-x';
-import { host, isPreviewImageSupportEnabled } from '../../lib/config';
+import {
+  defaultPageCover,
+  host,
+  isPreviewImageSupportEnabled,
+} from '../../lib/config';
+import { mapImageUrl } from '../../lib/mapImageUrl';
 import { mapPageUrl } from '../../lib/mapPageUrl';
 import { readConfig } from '../../lib/readConfig';
 import { searchNotion } from '../../lib/searchNotion';
@@ -67,7 +72,9 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
         rootDomain={host}
         className={cs(isIndex && 'index-page')}
         bodyClassName={cs(isIndex && 'index-page-body')}
+        defaultPageCover={defaultPageCover}
         mapPageUrl={siteMapPageUrl}
+        mapImageUrl={mapImageUrl}
         previewImages={isPreviewImageSupportEnabled}
         searchNotion={searchNotion}
       />

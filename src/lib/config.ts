@@ -1,22 +1,44 @@
 import { parsePageId } from 'notion-utils';
 import { getEnv } from './getEnv';
+import { getIsAbsoluteUrl } from './getIsAbsoluteUrl';
 import { readConfig } from './readConfig';
 import { PageUrlOverridesInverseMap, PageUrlOverridesMap, Site } from './types';
 
+export const domain = process.env.NEXT_PUBLIC_DOMAIN ?? '';
+export const host = process.env.NEXT_PUBLIC_HOST ?? '';
 export const environment = process.env.NODE_ENV || 'development';
 
 export const isDev = environment === 'development';
 
 export const isServer = typeof window === 'undefined';
 
+export const apiBaseUrl = `/api`;
+
+export const feedUrl = '/feed.xml';
+
+export const api = {
+  searchNotion: `${apiBaseUrl}/search-notion`,
+  getNotionPageInfo: `${apiBaseUrl}/notion-page-info`,
+  getSocialImage: `${apiBaseUrl}/social-image`,
+};
+
+const getDefaultPageCover = () => {
+  const defaultPageCover = readConfig('defaultPageCover');
+
+  if (!defaultPageCover) {
+    return undefined;
+  }
+
+  return getIsAbsoluteUrl(defaultPageCover)
+    ? defaultPageCover
+    : `${host}${defaultPageCover}`;
+};
+
 export const rootNotionSpaceId = readConfig('rootNotionSpaceId');
 export const rootNotionPageId = readConfig('rootNotionPageId');
 export const defaultPageCoverPosition = readConfig('defaultPageCoverPosition');
-export const defaultPageCover = readConfig('defaultPageCover');
+export const defaultPageCover = getDefaultPageCover();
 export const defaultPageIcon = readConfig('defaultPageIcon');
-
-export const domain = process.env.NEXT_PUBLIC_DOMAIN ?? '';
-export const host = process.env.NEXT_PUBLIC_HOST ?? '';
 
 export const site: Site = {
   domain,
@@ -24,6 +46,7 @@ export const site: Site = {
   rootNotionPageId,
   rootNotionSpaceId: rootNotionSpaceId ?? null,
   description: readConfig('description'),
+  image: defaultPageCover,
 };
 
 export const author = readConfig('author');
@@ -117,13 +140,3 @@ export const isPreviewImageSupportEnabled = readConfig(
   'isPreviewImageSupportEnabled',
   false,
 );
-
-export const apiBaseUrl = `/api`;
-
-export const feedUrl = '/feed.xml';
-
-export const api = {
-  searchNotion: `${apiBaseUrl}/search-notion`,
-  getNotionPageInfo: `${apiBaseUrl}/notion-page-info`,
-  getSocialImage: `${apiBaseUrl}/social-image`,
-};

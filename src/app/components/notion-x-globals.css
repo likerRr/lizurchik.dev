@@ -95,8 +95,7 @@ body {
 }
 
 .notion-collection-card-cover:empty {
-  /* TODO*/
-  background: url(/empty-cover-c.png) no-repeat center center;
+  background: url(/empty-cover-preview.png) no-repeat center center;
   background-size: cover;
 }
 

@@ -4,7 +4,7 @@ import { defaultPageCover, defaultPageIcon } from './config';
 
 export const mapImageUrl = (url: string | undefined, block: Block) => {
   if (url === defaultPageCover || url === defaultPageIcon) {
-    return url
+    return url;
   }
 
   return defaultMapImageUrl(url, block);

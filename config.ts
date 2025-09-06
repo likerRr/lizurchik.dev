@@ -1,7 +1,6 @@
 export const config = {
   rootNotionPageId: '2503641abc59805ea747d35c67f5f7f0',
   rootNotionSpaceId: undefined,
-  // rootDomain: 'https://lizurchik.dev',
   navigationStyle: 'custom',
   navigationLinks: [
     {
@@ -18,7 +17,8 @@ export const config = {
 
   defaultPageIcon:
     'https://www.notion.so/image/attachment%3A869ba76a-f46e-4b2e-be42-1f4aeb1a00e6%3A%D0%94%D0%B8%D0%B7%D0%B0%D0%B8%D0%BD_%D0%B1%D0%B5%D0%B7_%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F_(4).png?table=block&id=2503641a-bc59-805e-a747-d35c67f5f7f0&cache=v2',
-  defaultPageCover: undefined,
+  defaultPageCover:
+    'https://www.notion.so/image/attachment%3A36f817da-71b4-41af-88b3-73215b3a999b%3Alizurchik.dev_(15).png?table=block&id=2503641a-bc59-805e-a747-d35c67f5f7f0&cache=v2',
   defaultPageCoverPosition: 0.5,
 
   // basic site info (required)
