@@ -1,5 +1,5 @@
 import type * as types from 'notion-types';
-import { CSSProperties } from 'react';
+import { CSSProperties, MouseEventHandler } from 'react';
 import { Breadcrumbs, cs, Search, useNotionContext } from 'react-notion-x';
 
 import { config } from '../../../../config';
@@ -14,7 +14,12 @@ export const Header = ({
   navigationLinks = config.navigationLinks,
 }: {
   block: types.CollectionViewPageBlock | types.PageBlock;
-  navigationLinks?: { title: string; pageId?: string; url?: string }[];
+  navigationLinks?: {
+    title: string;
+    pageId?: string;
+    url?: string;
+    onClick?: MouseEventHandler<HTMLAnchorElement>;
+  }[];
 }) => {
   const { components, mapPageUrl } = useNotionContext();
 
@@ -36,6 +41,7 @@ export const Header = ({
                     href={mapPageUrl(link.pageId)}
                     key={index}
                     className={cs('breadcrumb', 'button')}
+                    onClick={link.onClick}
                   >
                     {link.title}
                   </components.PageLink>
@@ -47,6 +53,7 @@ export const Header = ({
                   href={link.url}
                   key={index}
                   className={cs('breadcrumb', 'button')}
+                  onClick={link.onClick}
                 >
                   {link.title}
                 </components.Link>
