@@ -2,17 +2,20 @@ import { Metadata } from 'next';
 import { host } from '../lib/config';
 import NotFound from './components/NotFound';
 
+const title = 'Not Found';
+const description = 'The page you are looking for does not exist.';
+
 export const metadata: Metadata = {
-  title: 'Not Found',
-  description: 'The page you are looking for does not exist.',
+  title,
+  description,
   openGraph: {
-    title: 'Not Found',
-    description: 'The page you are looking for does not exist.',
+    title,
+    description,
     images: `${host}/not-found.png`,
   },
   twitter: {
-    title: 'Not Found',
-    description: 'The page you are looking for does not exist.',
+    title,
+    description,
   },
 };
 
