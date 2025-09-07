@@ -6,6 +6,8 @@ import { getSiteMap } from '../lib/getSiteMap';
 import { getLastModifiedTime } from '../lib/properties';
 import { SiteMap } from '../lib/types';
 
+export const revalidate = 3600;
+
 type GetPageDataReturn =
   | { block: Block; recordMap: ExtendedRecordMap }
   | { block: null; recordMap: null };
