@@ -17,13 +17,14 @@ export function getCanonicalPageId(
   }
 
   const override = inversePageUrlOverrides[cleanPageId];
+
   if (override) {
     return override;
-  } else {
-    return (
-      getCanonicalPageIdImpl(pageId, recordMap, {
-        uuid,
-      }) ?? undefined
-    );
   }
+
+  return (
+    getCanonicalPageIdImpl(pageId, recordMap, {
+      uuid,
+    }) ?? undefined
+  );
 }
