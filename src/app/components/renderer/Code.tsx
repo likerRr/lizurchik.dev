@@ -24,6 +24,8 @@ export const Code = dynamic(
         // @ts-expect-error Ignore prisma types
         import('prismjs/components/prism-js-templates.js'),
         // @ts-expect-error Ignore prisma types
+        import('prismjs/components/prism-typescript.js'),
+        // @ts-expect-error Ignore prisma types
         import('prismjs/components/prism-coffeescript.js'),
         // @ts-expect-error Ignore prisma types
         import('prismjs/components/prism-diff.js'),

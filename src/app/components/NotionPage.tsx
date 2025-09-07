@@ -23,6 +23,7 @@ import { Header } from './renderer/Header';
 import { Collection } from './renderer/Collection';
 import { Modal } from './renderer/Modal';
 
+import 'prismjs/themes/prism-tomorrow.css';
 import 'react-notion-x/src/styles.css';
 import './notion-x-globals.css';
 
