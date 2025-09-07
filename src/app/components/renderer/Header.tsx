@@ -2,8 +2,7 @@ import type * as types from 'notion-types';
 import { CSSProperties, MouseEventHandler } from 'react';
 import { Breadcrumbs, cs, Search, useNotionContext } from 'react-notion-x';
 
-import { config } from '../../../../config';
-import { domain } from '@/lib/config';
+import { domain, navigationLinks as defaultNavLinks } from '@/lib/config';
 
 const notionNavHeaderStyle = {
   '--domain': `"${domain}"`,
@@ -14,7 +13,7 @@ const notionNavHeaderStyle = {
 
 export const Header = ({
   block,
-  navigationLinks = config.navigationLinks,
+  navigationLinks = defaultNavLinks,
 }: {
   block: types.CollectionViewPageBlock | types.PageBlock;
   navigationLinks?: {
