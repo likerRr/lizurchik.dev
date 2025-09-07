@@ -227,3 +227,11 @@ img.notion-page-icon {
   content: var(--domain);
   visibility: visible;
 }
+
+.notion-external {
+  border-color: var(--bg-color-0);
+}
+
+.notion-external-block-desc {
+  color: var(--notion-gray);
+}
