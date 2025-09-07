@@ -65,7 +65,7 @@ body {
   border-radius: 0;
 }
 
-@media (min-width: 800px) {
+@media (min-width: 800px) and (min-height: 825px) {
   .notion-page-cover-wrapper img {
     border-radius: 65% 35% 65% 35%;
   }
