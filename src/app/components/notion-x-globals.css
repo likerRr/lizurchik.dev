@@ -45,9 +45,20 @@ body {
   background-color: var(--bg-color-zero);
 }
 
+@media (min-width: 1300px) and (min-height: 300px) {
+  .notion-page-content-has-aside {
+    /* overriding original styles */
+    width: 100%;
+  }
+}
+
+.notion-aside {
+  margin-top: -20vw;
+}
+
 .notion-app,
 .notion-header{
-  min-width: 335px;
+  min-width: 375px;
 }
 
 .notion-page-cover-wrapper img {

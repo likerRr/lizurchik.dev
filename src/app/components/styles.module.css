@@ -43,6 +43,16 @@
 
 .social {
   user-select: none;
+  display: flex;
+  gap: 8px;
+}
+
+.asideContainer {
+  margin-left: 8px;
+}
+
+.asideContainer .social {
+  flex-direction: column;
 }
 
 .social a {
@@ -51,7 +61,6 @@
   font-size: 2em;
   display: inline-flex;
   padding: 0.25em;
-  margin-right: 1vw;
   transition: color 250ms ease-out;
 }
 

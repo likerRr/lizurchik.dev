@@ -17,6 +17,7 @@ import { PageProps } from '../../lib/types';
 import { Footer } from './Footer';
 import { JSONLD } from './JSONLD';
 import NotFound from './NotFound';
+import { Aside } from './Aside';
 import { Code } from './renderer/Code';
 import { Header } from './renderer/Header';
 import { Collection } from './renderer/Collection';
@@ -79,6 +80,7 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
         previewImages={isPreviewImageSupportEnabled}
         searchNotion={searchNotion}
         footer={<Footer />}
+        pageAside={isBlogPost ? undefined : <Aside />}
       />
     </>
   );
