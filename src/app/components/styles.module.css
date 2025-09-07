@@ -23,3 +23,54 @@
   object-fit: cover;
   height: 100vh;
 }
+
+.footer {
+  width: 100%;
+  max-width: 1100px;
+  margin: auto auto 0;
+  padding: 8px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copyright {
+  font-size: 80%;
+  padding: 0.5em;
+}
+
+.social {
+  user-select: none;
+}
+
+.social a {
+  color: inherit;
+  cursor: pointer;
+  font-size: 2em;
+  display: inline-flex;
+  padding: 0.25em;
+  margin-right: 1vw;
+  transition: color 250ms ease-out;
+}
+
+.social a:last-of-type {
+  margin-right: 0;
+}
+
+.social a:hover {
+  transition: color 50ms ease-out;
+}
+
+.rss:hover {
+  color: #d17d01;
+}
+
+.github:hover {
+  color: #070201;
+}
+
+.linkedin:hover {
+  color: #0077b5;
+}

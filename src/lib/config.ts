@@ -39,6 +39,8 @@ export const rootNotionPageId = readConfig('rootNotionPageId');
 export const defaultPageCoverPosition = readConfig('defaultPageCoverPosition');
 export const defaultPageCover = getDefaultPageCover();
 export const defaultPageIcon = readConfig('defaultPageIcon');
+export const github = readConfig('github');
+export const linkedin = readConfig('linkedin');
 
 export const site: Site = {
   domain,

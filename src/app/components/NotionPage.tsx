@@ -14,6 +14,7 @@ import { mapPageUrl } from '../../lib/mapPageUrl';
 import { readConfig } from '../../lib/readConfig';
 import { searchNotion } from '../../lib/searchNotion';
 import { PageProps } from '../../lib/types';
+import { Footer } from './Footer';
 import { JSONLD } from './JSONLD';
 import NotFound from './NotFound';
 import { Code } from './renderer/Code';
@@ -51,8 +52,6 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection';
 
-  // TODO social links
-
   return (
     <>
       {isBlogPost && (
@@ -79,6 +78,7 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
         mapImageUrl={mapImageUrl}
         previewImages={isPreviewImageSupportEnabled}
         searchNotion={searchNotion}
+        footer={<Footer />}
       />
     </>
   );
