@@ -8,6 +8,7 @@ import {
   defaultPageCover,
   host,
   isPreviewImageSupportEnabled,
+  rootNotionPageId,
 } from '../../lib/config';
 import { mapImageUrl } from '../../lib/mapImageUrl';
 import { mapPageUrl } from '../../lib/mapPageUrl';
@@ -53,6 +54,7 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
 
   const isBlogPost =
     block?.type === 'page' && block?.parent_table === 'collection';
+  const isRootPage = pageId === idToUuid(rootNotionPageId);
 
   return (
     <>
@@ -81,7 +83,7 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
         previewImages={isPreviewImageSupportEnabled}
         searchNotion={searchNotion}
         footer={<Footer />}
-        pageAside={isBlogPost ? undefined : <Aside />}
+        pageAside={isRootPage ? <Aside /> : undefined}
       />
     </>
   );
