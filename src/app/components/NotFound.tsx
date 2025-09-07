@@ -1,6 +1,8 @@
 'use client';
 
+import Image from 'next/image';
 import { NotionContextProvider } from 'react-notion-x';
+import notFoundImage from '../../../public/not-found.png';
 import { mapPageUrl } from '../../lib/mapPageUrl';
 import { PageProps } from '../../lib/types';
 import { rootNotionPageId, site as configSite } from '../../lib/config';
@@ -32,8 +34,8 @@ export default function NotFound({ site = configSite }: PageProps) {
 
       <div className={styles.container}>
         <main className={styles.main}>
-          <img
-            src="/not-found.png"
+          <Image
+            src={notFoundImage}
             alt="404 Not Found"
             className={styles.errorImage}
           />

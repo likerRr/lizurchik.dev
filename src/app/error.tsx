@@ -1,7 +1,9 @@
 'use client';
 
+import Image from 'next/image';
 import { useEffect } from 'react';
 import { NotionContextProvider } from 'react-notion-x';
+import errorImage from '../../public/error.png';
 import { rootNotionPageId, site } from '../lib/config';
 import { mapPageUrl } from '../lib/mapPageUrl';
 import { Header } from './components/renderer/Header';
@@ -50,8 +52,8 @@ export default function Error({
 
       <div className={styles.container}>
         <main className={styles.main}>
-          <img
-            src="/error.png"
+          <Image
+            src={errorImage}
             alt="404 Not Found"
             className={styles.errorImage}
           />
