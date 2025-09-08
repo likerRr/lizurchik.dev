@@ -77,7 +77,7 @@ export async function GET(req: NextRequest) {
           />
         )}
 
-        {pageInfo.authorImage && (
+        {!pageInfo.isBlogPost && pageInfo.authorImage && (
           <div
             style={{
               position: 'absolute',
