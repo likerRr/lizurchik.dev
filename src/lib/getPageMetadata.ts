@@ -4,6 +4,7 @@ import { defaultPageCover, host } from './config';
 import { getSocialImageUrl } from './getSocialImageUrl';
 import { mapImageUrl } from './mapImageUrl';
 import { getCanonicalPageUrl } from './mapPageUrl';
+import { metadataLayout, metadataNotFound } from './metadata';
 import { resolveNotionPage } from './resolveNotionPage';
 
 export const getPageMetadata = async (page: string) => {
@@ -14,39 +15,40 @@ export const getPageMetadata = async (page: string) => {
   const block = pageId ? recordMap?.block?.[pageId]?.value : undefined;
 
   if (error || !site || !recordMap || !pageId || !block) {
-    return {};
+    return metadataNotFound;
   }
 
-  const title = getBlockTitle(block, recordMap) || undefined;
-  const description =
-    getPageProperty<string>('Description', block, recordMap) || undefined;
+  const title = getBlockTitle(block, recordMap);
+  const description = getPageProperty<string>('Description', block, recordMap);
   const image = mapImageUrl(
-    getPageProperty<string>('Social Image', block, recordMap) ||
-      (block as PageBlock).format?.page_cover ||
-      defaultPageCover ||
-      undefined,
+    getPageProperty<string>('Social Image', block, recordMap) ??
+      (block as PageBlock).format?.page_cover ??
+      defaultPageCover,
     block,
   );
-  const socialImageUrl = getSocialImageUrl(pageId) || image;
+  const socialImages = getSocialImageUrl(pageId) ?? image;
   const canonical = getCanonicalPageUrl(site, recordMap)(pageId);
 
   return {
-    metadataBase: new URL(host),
+    ...metadataLayout,
     title,
     description,
     openGraph: {
+      ...metadataLayout.openGraph,
       title,
       description,
-      images: socialImageUrl,
+      images: socialImages,
       url: canonical,
     },
     twitter: {
+      ...metadataLayout.twitter,
       title,
       description,
-      images: socialImageUrl,
-      card: socialImageUrl ? 'summary_large_image' : undefined,
+      images: socialImages,
+      card: socialImages ? 'summary_large_image' : metadataLayout.twitter.card,
     },
     alternates: {
+      ...metadataLayout.alternates,
       canonical,
     },
   };
