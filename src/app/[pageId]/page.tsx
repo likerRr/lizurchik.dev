@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import { host } from '../../lib/config';
 import { getPageMetadata } from '../../lib/getPageMetadata';
 import { getSiteMap } from '../../lib/getSiteMap';
@@ -29,6 +30,14 @@ type Props = {
 export default async function Page({ params }: Props) {
   const { pageId } = await params;
   const pageProps = await resolveNotionPage(host, pageId);
+
+  if (pageProps.error?.statusCode === 404) {
+    notFound();
+  }
+
+  if (pageProps.error) {
+    throw new Error(pageProps.error?.message ?? 'Failed to load page');
+  }
 
   return <NotionPage {...pageProps} />;
 }
