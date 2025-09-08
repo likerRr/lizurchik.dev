@@ -66,3 +66,7 @@ export const getLastModifiedTime = (
 
   return new Date();
 };
+
+export const getIsCollectionPage = (block: Block) => {
+  return block.type === 'page' && block.parent_table === 'collection';
+};

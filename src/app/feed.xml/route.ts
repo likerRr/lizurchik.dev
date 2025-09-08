@@ -10,7 +10,11 @@ import { feedUrl, host, rootNotionPageId, site } from '../../lib/config';
 import { getSiteMap } from '../../lib/getSiteMap';
 import { getSocialImageUrl } from '../../lib/getSocialImageUrl';
 import { getCanonicalPageUrl } from '../../lib/mapPageUrl';
-import { getIsPublicProperty, getLastModifiedTime } from '../../lib/properties';
+import {
+  getIsCollectionPage,
+  getIsPublicProperty,
+  getLastModifiedTime,
+} from '../../lib/properties';
 
 export const GET = async () => {
   const siteMap = await getSiteMap();
@@ -42,8 +46,7 @@ export const GET = async () => {
 
     const parentPage = getBlockParentPage(block, recordMap);
     const isBlogPost =
-      block.type === 'page' &&
-      block.parent_table === 'collection' &&
+      getIsCollectionPage(block) &&
       parentPage?.id === idToUuid(rootNotionPageId);
 
     if (!isBlogPost) {

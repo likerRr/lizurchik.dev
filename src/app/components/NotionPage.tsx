@@ -12,6 +12,7 @@ import {
 } from '../../lib/config';
 import { mapImageUrl } from '../../lib/mapImageUrl';
 import { mapPageUrl } from '../../lib/mapPageUrl';
+import { getIsCollectionPage } from '../../lib/properties';
 import { readConfig } from '../../lib/readConfig';
 import { searchNotion } from '../../lib/searchNotion';
 import { PageProps } from '../../lib/types';
@@ -52,8 +53,7 @@ export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
     return <NotFound site={site} pageId={pageId} error={error} />;
   }
 
-  const isBlogPost =
-    block?.type === 'page' && block?.parent_table === 'collection';
+  const isBlogPost = getIsCollectionPage(block);
   const isRootPage = pageId === idToUuid(rootNotionPageId);
 
   return (

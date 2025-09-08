@@ -22,6 +22,7 @@ import {
 } from '../../../lib/config';
 import { mapImageUrl } from '../../../lib/mapImageUrl';
 import { notionApi } from '../../../lib/notionApi';
+import { getIsCollectionPage } from '../../../lib/properties';
 import { readConfig } from '../../../lib/readConfig';
 import { NotionPageInfo, PageError } from '../../../lib/types';
 
@@ -145,8 +146,7 @@ async function getNotionPageInfo({
     };
   }
 
-  const isBlogPost =
-    block.type === 'page' && block.parent_table === 'collection';
+  const isBlogPost = getIsCollectionPage(block);
   const title = getBlockTitle(block, recordMap) || site.name;
 
   const imageCoverPosition =
@@ -196,6 +196,7 @@ async function getNotionPageInfo({
     author,
     authorImage,
     detail,
+    isBlogPost,
   };
 
   return {
