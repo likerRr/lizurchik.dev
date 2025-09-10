@@ -1,3 +1,4 @@
+import { getIsCollectionPage } from '@/lib/properties';
 import type * as types from 'notion-types';
 import { CSSProperties, MouseEventHandler } from 'react';
 import { Breadcrumbs, cs, Search, useNotionContext } from 'react-notion-x';
@@ -25,10 +26,12 @@ export const Header = ({
   }[];
 }) => {
   const { components, mapPageUrl } = useNotionContext();
+  const isPage = getIsCollectionPage(block);
 
   return (
     <header className="notion-header">
-      <div className={styles.readingProgress} />
+      {isPage && <div className={styles.readingProgress} />}
+
       <div className="notion-nav-header" style={notionNavHeaderStyle}>
         <Breadcrumbs block={block} rootOnly />
 
