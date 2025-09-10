@@ -1,8 +1,9 @@
 import type * as types from 'notion-types';
 import { CSSProperties, MouseEventHandler } from 'react';
 import { Breadcrumbs, cs, Search, useNotionContext } from 'react-notion-x';
-
 import { domain, navigationLinks as defaultNavLinks } from '@/lib/config';
+
+import styles from '../styles.module.css';
 
 const notionNavHeaderStyle = {
   '--domain': `"${domain}"`,
@@ -27,6 +28,7 @@ export const Header = ({
 
   return (
     <header className="notion-header">
+      <div className={styles.readingProgress} />
       <div className="notion-nav-header" style={notionNavHeaderStyle}>
         <Breadcrumbs block={block} rootOnly />
 

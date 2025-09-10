@@ -83,3 +83,24 @@
 .linkedin:hover {
   color: #0077b5;
 }
+
+@keyframes fill {
+  from { width: 0 }
+  to { width: 100%; }
+}
+
+@keyframes fill {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+.readingProgress {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(203, 108, 232, .6);
+
+  animation: fill linear both;
+  animation-timeline: scroll(root);
+}
