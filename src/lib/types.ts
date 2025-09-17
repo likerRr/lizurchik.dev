@@ -1,8 +1,8 @@
 import { ExtendedRecordMap, PageMap } from 'notion-types';
 
-export interface CanonicalPageMap {
+export type CanonicalPageMap = {
   [canonicalPageId: string]: string;
-}
+};
 
 export type Site = {
   name: string;
@@ -46,13 +46,13 @@ export type PageUrlOverridesMap = {
   [pagePath: string]: string;
 };
 
-export interface PageUrlOverridesInverseMap {
+export type PageUrlOverridesInverseMap = {
   // maps from a notion page id to the URL path the page should be resolved to
   // (this overrides the built-in URL path generation for these pages)
   [pageId: string]: string;
-}
+};
 
-export interface NotionPageInfo {
+export type NotionPageInfo = {
   pageId: string;
   title: string;
   image?: string;
@@ -61,4 +61,4 @@ export interface NotionPageInfo {
   authorImage?: string;
   detail?: string;
   isBlogPost: boolean;
-}
+};
