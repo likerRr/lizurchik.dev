@@ -9,13 +9,13 @@ import {
   host,
   isPreviewImageSupportEnabled,
   rootNotionPageId,
-} from '../../lib/config';
-import { mapImageUrl } from '../../lib/mapImageUrl';
-import { mapPageUrl } from '../../lib/mapPageUrl';
-import { getIsCollectionPage } from '../../lib/properties';
-import { readConfig } from '../../lib/readConfig';
-import { searchNotion } from '../../lib/searchNotion';
-import { PageProps } from '../../lib/types';
+} from '@/lib/config';
+import { mapImageUrl } from '@/lib/mapImageUrl';
+import { mapPageUrl } from '@/lib/mapPageUrl';
+import { getIsCollectionPage } from '@/lib/properties';
+import { readConfig } from '@/lib/readConfig';
+import { searchNotion } from '@/lib/searchNotion';
+import { PageProps } from '@/lib/types';
 import { Footer } from './Footer';
 import { JSONLD } from './JSONLD';
 import NotFound from './NotFound';

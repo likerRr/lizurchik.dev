@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { metadataNotFound } from '../lib/metadata';
-import NotFound from './components/NotFound';
+import { metadataNotFound } from '@/lib/metadata';
+import NotFound from '@/components/NotFound';
 
 export const metadata: Metadata = metadataNotFound;
 

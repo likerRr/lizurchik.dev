@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { host } from '../../lib/config';
-import { getPageMetadata } from '../../lib/getPageMetadata';
-import { getSiteMap } from '../../lib/getSiteMap';
-import { resolveNotionPage } from '../../lib/resolveNotionPage';
-import { NotionPage } from '../components/NotionPage';
+import { host } from '@/lib/config';
+import { getPageMetadata } from '@/lib/getPageMetadata';
+import { getSiteMap } from '@/lib/getSiteMap';
+import { resolveNotionPage } from '@/lib/resolveNotionPage';
+import { NotionPage } from '@/components/NotionPage';
 
 export const revalidate = 60;
 

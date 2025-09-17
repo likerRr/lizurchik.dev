@@ -1,10 +1,10 @@
 import type { MetadataRoute } from 'next';
 import { Block, ExtendedRecordMap } from 'notion-types';
 import { idToUuid } from 'notion-utils';
-import { host } from '../lib/config';
-import { getSiteMap } from '../lib/getSiteMap';
-import { getLastModifiedTime } from '../lib/properties';
-import { SiteMap } from '../lib/types';
+import { host } from '@/lib/config';
+import { getSiteMap } from '@/lib/getSiteMap';
+import { getLastModifiedTime } from '@/lib/properties';
+import { SiteMap } from '@/lib/types';
 
 export const revalidate = 3600;
 

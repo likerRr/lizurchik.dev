@@ -1,6 +1,6 @@
 import { NextRequest } from 'next/server';
 import { SearchParams } from 'notion-types';
-import { search } from '../../../lib/notion';
+import { search } from '@/lib/notion';
 
 export const POST = async (req: NextRequest) => {
   const searchParams: SearchParams = await req.json();

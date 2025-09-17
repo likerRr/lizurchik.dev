@@ -1,4 +1,4 @@
-import { author } from '../../lib/config';
+import { author } from '@/lib/config';
 import { SocialLinks } from './SocialLinks';
 
 import styles from './styles.module.css';

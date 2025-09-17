@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import { NotionContextProvider } from 'react-notion-x';
-import notFoundImage from '../../../public/not-found.png';
-import { mapPageUrl } from '../../lib/mapPageUrl';
-import { PageProps } from '../../lib/types';
-import { rootNotionPageId, site as configSite } from '../../lib/config';
+import notFoundImage from '../../public/not-found.png';
+import { mapPageUrl } from '@/lib/mapPageUrl';
+import { PageProps } from '@/lib/types';
+import { rootNotionPageId, site as configSite } from '@/lib/config';
 import { Header } from './renderer/Header';
 
 import 'react-notion-x/src/styles.css';

@@ -4,13 +4,13 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { NotionContextProvider } from 'react-notion-x';
 import errorImage from '../../public/error.png';
-import { rootNotionPageId, site } from '../lib/config';
-import { mapPageUrl } from '../lib/mapPageUrl';
-import { Header } from './components/renderer/Header';
+import { rootNotionPageId, site } from '@/lib/config';
+import { mapPageUrl } from '@/lib/mapPageUrl';
+import { Header } from '@/components/renderer/Header';
 
 import 'react-notion-x/src/styles.css';
-import './components/notion-x-globals.css';
-import styles from './components/styles.module.css';
+import '@/components/notion-x-globals.css';
+import styles from '@/components/styles.module.css';
 
 export default function Error({
   error,

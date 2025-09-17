@@ -20,11 +20,11 @@ import {
   site,
   author as configAuthor,
 } from '../../../lib/config';
-import { mapImageUrl } from '../../../lib/mapImageUrl';
-import { notionApi } from '../../../lib/notionApi';
-import { getIsCollectionPage } from '../../../lib/properties';
-import { readConfig } from '../../../lib/readConfig';
-import { NotionPageInfo, PageError } from '../../../lib/types';
+import { mapImageUrl } from '@/lib/mapImageUrl';
+import { notionApi } from '@/lib/notionApi';
+import { getIsCollectionPage } from '@/lib/properties';
+import { readConfig } from '@/lib/readConfig';
+import { NotionPageInfo, PageError } from '@/lib/types';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url!);

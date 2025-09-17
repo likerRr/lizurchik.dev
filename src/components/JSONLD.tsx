@@ -1,10 +1,10 @@
 import { Block, ExtendedRecordMap, PageBlock } from 'notion-types';
 import { getBlockTitle, getPageProperty } from 'notion-utils';
-import { author, isDev } from '../../lib/config';
-import { mapImageUrl } from '../../lib/mapImageUrl';
-import { getCanonicalPageUrl } from '../../lib/mapPageUrl';
-import { readConfig } from '../../lib/readConfig';
-import { Site } from '../../lib/types';
+import { author, isDev } from '@/lib/config';
+import { mapImageUrl } from '@/lib/mapImageUrl';
+import { getCanonicalPageUrl } from '@/lib/mapPageUrl';
+import { readConfig } from '@/lib/readConfig';
+import { Site } from '@/lib/types';
 
 type Props = {
   site: Site;

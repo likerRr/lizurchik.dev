@@ -2,7 +2,7 @@ import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FaLinkedin } from '@react-icons/all-files/fa/FaLinkedin';
 import { FaRss } from '@react-icons/all-files/fa/FaRss';
 import * as React from 'react';
-import { author, feedUrl, github, host, linkedin } from '../../lib/config';
+import { author, feedUrl, github, host, linkedin } from '@/lib/config';
 import styles from './styles.module.css';
 
 export const SocialLinks = () => {

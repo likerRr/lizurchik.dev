@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
-import { host } from '../lib/config';
-import { getPageMetadata } from '../lib/getPageMetadata';
-import { getMetaTitleTemplate } from '../lib/metadata';
-import { readConfig } from '../lib/readConfig';
-import { resolveNotionPage } from '../lib/resolveNotionPage';
-import { NotionPage } from './components/NotionPage';
+import { host } from '@/lib/config';
+import { getPageMetadata } from '@/lib/getPageMetadata';
+import { getMetaTitleTemplate } from '@/lib/metadata';
+import { readConfig } from '@/lib/readConfig';
+import { resolveNotionPage } from '@/lib/resolveNotionPage';
+import { NotionPage } from '@/components/NotionPage';
 
 export const revalidate = 60;
 
