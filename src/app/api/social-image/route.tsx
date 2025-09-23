@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element, jsx-a11y/alt-text */
 
-import ky from 'ky';
+import { ofetch } from 'ofetch';
 import { NextRequest } from 'next/server';
 import { ImageResponse } from 'next/og';
 import { type PageBlock } from 'notion-types';
@@ -213,7 +213,7 @@ async function isUrlReachable(
   }
 
   try {
-    await ky.head(url);
+    await ofetch(url, { method: 'HEAD' });
     return true;
   } catch {
     return false;

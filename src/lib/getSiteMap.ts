@@ -27,7 +27,7 @@ type GetPageOptions = Parameters<typeof notionApi.getPage>[1];
 const getPage = async (pageId: string, opts?: GetPageOptions) => {
   // console.log('\nnotion getPage', uuidToId(pageId));
   return notionApi.getPage(pageId, {
-    kyOptions: {
+    ofetchOptions: {
       timeout: 30_000,
     },
     ...opts,

@@ -1,4 +1,4 @@
-import ky from 'ky';
+import { ofetch } from 'ofetch';
 import {
   type ExtendedRecordMap,
   type PreviewImage,
@@ -50,7 +50,9 @@ async function createPreviewImage(
       console.warn(`redis error get "${cacheKey}"`, (err as Error).message);
     }
 
-    const bodyO = await ky(url).arrayBuffer();
+    const bodyO = await ofetch(url, {
+      responseType: 'arrayBuffer',
+    });
     const { base64, metadata } = await getPlaiceholder(Buffer.from(bodyO));
 
     const previewImage = {
