@@ -93,6 +93,8 @@ export const config = {
 }
 ```
 
+> **📝 Note on Notion Page IDs:** The Notion page IDs in the configuration file are not sensitive data since they refer to publicly published pages. These IDs are intentionally kept in the codebase for transparency and ease of configuration.
+
 **Key Configuration Options:**
 
 - `rootNotionPageId` – The ID of your root Notion page (must be published to web)
