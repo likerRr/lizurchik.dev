@@ -4,7 +4,7 @@ import { CSSProperties, MouseEventHandler } from 'react';
 import { Breadcrumbs, cs, Search, useNotionContext } from 'react-notion-x';
 import { domain, navigationLinks as defaultNavLinks } from '@/lib/config';
 
-import styles from '../styles.module.css';
+import styles from '@/styles/styles.module.css';
 
 const notionNavHeaderStyle = {
   '--domain': `"${domain}"`,

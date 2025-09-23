@@ -9,8 +9,8 @@ import { mapPageUrl } from '@/lib/mapPageUrl';
 import { Header } from '@/components/renderer/Header';
 
 import 'react-notion-x/src/styles.css';
-import '@/components/notion-x-globals.css';
-import styles from '@/components/styles.module.css';
+import '@/styles/notion-x-globals.css';
+import styles from '@/styles/styles.module.css';
 
 export default function Error({
   error,

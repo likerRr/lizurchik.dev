@@ -9,8 +9,8 @@ import { rootNotionPageId, site as configSite } from '@/lib/config';
 import { Header } from './renderer/Header';
 
 import 'react-notion-x/src/styles.css';
-import './notion-x-globals.css';
-import styles from './styles.module.css';
+import '@/styles/notion-x-globals.css';
+import styles from '@/styles/styles.module.css';
 
 export default function NotFound({ site = configSite }: PageProps) {
   return (

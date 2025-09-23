@@ -27,7 +27,7 @@ import { Modal } from './renderer/Modal';
 
 import 'prismjs/themes/prism-tomorrow.css';
 import 'react-notion-x/src/styles.css';
-import './notion-x-globals.css';
+import '@/styles/notion-x-globals.css';
 
 type Props = PageProps;
 
