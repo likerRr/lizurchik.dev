@@ -1,7 +1,6 @@
 export const config = {
   rootNotionPageId: '2503641abc59805ea747d35c67f5f7f0',
   rootNotionSpaceId: undefined,
-  navigationStyle: 'custom',
   navigationLinks: [
     {
       title: 'About',
