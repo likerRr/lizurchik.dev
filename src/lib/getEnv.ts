@@ -15,9 +15,5 @@ export function getEnv<T>(
     return defaultValue;
   }
 
-  if (isServer) {
-    throw new Error(`Config error: missing required env variable "${key}"`);
-  }
-
   return null as unknown as T;
 }
