@@ -61,3 +61,21 @@ You can add public assets (e.g. images) to the `/public` directory. They will be
 - `/public/empty-cover-preview.png` – default image for the pages without a cover within a collection
 - `/public/not-found.png` – image for the `/app/not-found.tsx` page
 - `/src/app/favicon.ico` – favicon for the site
+
+### Redis (optional)
+
+Cache is used to store preview images when `isPreviewImageSupportEnabled` enabled. There are two options to connect to Redis by providing the following environment variables:
+
+```
+REDIS_ENABLED=1
+REDIS_HOST=
+REDIS_USER=
+REDIS_PASSWORD=
+```
+
+or
+
+```
+REDIS_ENABLED=1
+REDIS_URL=
+```

@@ -122,21 +122,19 @@ export const includeNotionIdInUrls = isDev;
 export const isRedisEnabled: boolean =
   readConfig('isRedisEnabled', false) || !!getEnv('REDIS_ENABLED', null);
 
-// (if you want to enable redis, only REDIS_HOST and REDIS_PASSWORD are required)
-// we recommend that you store these in a local `.env.local` file
-export const redisHost = getEnv(
-  'REDIS_HOST',
-  isRedisEnabled ? undefined : null,
-);
-export const redisPassword = getEnv(
-  'REDIS_PASSWORD',
-  isRedisEnabled ? undefined : null,
-);
-export const redisUser: string = getEnv('REDIS_USER', 'default');
-export const redisUrl = getEnv(
-  'REDIS_URL',
-  isRedisEnabled ? `redis://${redisUser}:${redisPassword}@${redisHost}` : null,
-);
+const makeRedisUrl = () => {
+  const redisHost = getEnv('REDIS_HOST', isRedisEnabled ? undefined : null);
+  const redisPassword = getEnv(
+    'REDIS_PASSWORD',
+    isRedisEnabled ? undefined : null,
+  );
+  const redisUser: string = getEnv('REDIS_USER', 'default');
+
+  return `redis://${redisUser}:${redisPassword}@${redisHost}`;
+};
+
+export const redisUrl =
+  getEnv('REDIS_URL') || (isRedisEnabled ? makeRedisUrl() : null);
 export const redisNamespace = getEnv('REDIS_NAMESPACE', 'preview-images');
 
 export const isPreviewImageSupportEnabled = readConfig(
