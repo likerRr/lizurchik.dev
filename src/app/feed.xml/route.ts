@@ -2,6 +2,7 @@ import { type ExtendedRecordMap } from 'notion-types';
 import {
   getBlockParentPage,
   getBlockTitle,
+  getBlockValue,
   getPageProperty,
   idToUuid,
 } from 'notion-utils';
@@ -38,7 +39,7 @@ export const GET = async () => {
     }
 
     const keys = Object.keys(recordMap?.block || {});
-    const block = recordMap?.block?.[keys[0]!]?.value;
+    const block = getBlockValue(recordMap?.block?.[keys[0]!]);
 
     if (!block) {
       continue;

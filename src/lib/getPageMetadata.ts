@@ -1,5 +1,5 @@
 import { PageBlock } from 'notion-types';
-import { getBlockTitle, getPageProperty } from 'notion-utils';
+import { getBlockTitle, getBlockValue, getPageProperty } from 'notion-utils';
 import { defaultPageCover, host } from './config';
 import { getSocialImageUrl } from './getSocialImageUrl';
 import { mapImageUrl } from './mapImageUrl';
@@ -12,7 +12,7 @@ export const getPageMetadata = async (page: string) => {
     host,
     page,
   );
-  const block = pageId ? recordMap?.block?.[pageId]?.value : undefined;
+  const block = pageId ? getBlockValue(recordMap?.block?.[pageId]) : undefined;
 
   if (error || !site || !recordMap || !pageId || !block) {
     return metadataNotFound;

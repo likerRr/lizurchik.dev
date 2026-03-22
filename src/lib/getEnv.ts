@@ -1,5 +1,3 @@
-import { isServer } from './config';
-
 export function getEnv<T>(
   key: string,
   defaultValue?: string | T,

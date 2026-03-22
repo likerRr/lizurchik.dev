@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { idToUuid } from 'notion-utils';
+import { getBlockValue, idToUuid } from 'notion-utils';
 import { useMemo } from 'react';
 import { cs, NotionComponents, NotionRenderer } from 'react-notion-x';
 import {
@@ -40,7 +40,7 @@ const components: Partial<NotionComponents> = {
 };
 
 export const NotionPage = ({ recordMap, error, site, pageId }: Props) => {
-  const block = pageId ? recordMap?.block?.[pageId]?.value : undefined;
+  const block = pageId ? getBlockValue(recordMap?.block?.[pageId]) : undefined;
   const isIndex = pageId === idToUuid(readConfig('rootNotionPageId'));
 
   const siteMapPageUrl = useMemo(() => {

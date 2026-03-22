@@ -1,4 +1,8 @@
-import { getAllPagesInSpace, getCanonicalPageId } from 'notion-utils';
+import {
+  getAllPagesInSpace,
+  getBlockValue,
+  getCanonicalPageId,
+} from 'notion-utils';
 import pMemoize from 'p-memoize';
 import { includeNotionIdInUrls, site } from './config';
 import { notionApi } from './notionApi';
@@ -59,7 +63,7 @@ async function getAllPagesImpl(
         throw new Error(`Error loading page "${pageId}"`);
       }
 
-      const block = recordMap.block[pageId]?.value;
+      const block = getBlockValue(recordMap.block[pageId]);
 
       if (!getIsPublicProperty(block!, recordMap)) {
         return map;
